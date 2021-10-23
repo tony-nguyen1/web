@@ -1,0 +1,2 @@
+sudo ln -s /home/tony/L2_info/web/ /var/www/html/web
+

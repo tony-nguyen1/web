@@ -1,0 +1,37 @@
+1. Il y a 4 colonnes dans la grille.
+
+2. La classe prenant 100% de la largeur de plus haut niveau est le <div class="container-fluid"></div>.
+déclarer qu'on commence grille bootstrap, 1er élément
+
+3. La <div class="row"></div> est utilisé pour le layout.
+
+4. X-Small,Small, Medium, Large, Extra large et Extra extra large
+
+5. sm s'applique quand page de taille supérieur ou égal à 576 px
+
+6. Si page fait pour sm (>=576px) mais on est en 575 px,
+aucune mise ne page, par défaut tout prend la largeur l'un au-dessus des autres.
+
+8.
+      <hr>
+      <a id="Mobile"><h2>Mobile</h2></a>
+      <div class="row">
+        <div class="col-sm-2 align-self-center"><input type="number" name="samsung" min="0" step="1" class="form-control" 
+          placeholder="Quantité"></div>
+        <div class="col-sm-3 align-self-center"><img src="./img/samsung.jpg" alt="Téléphone Samsung" class="img-fluid"></div>
+        <div class="col-sm-2 align-self-center">Smartphone Samsung A50<br>300€</div>
+        <div class="col-sm-5 align-self-center">6.4" OLED display 2340x1080px 408ppi 
+          Système d'exploitation : Android
+          RAM : 4 Go - LPDDR4 SDRAM
+          Stockage : 107 Go</div>
+      </div>
+      <hr>
+
+
+
+
+<footer class="row">
+<a href="#carousel">link</a>
+<h1>Hard Discounter</h1>
+<a href = "mailto: contact@harddiscounter.com">Nous contacter</a>
+</footer>

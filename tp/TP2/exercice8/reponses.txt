@@ -1,0 +1,6 @@
+Question 1 : Décrire l’interface de la classe Mastermind.
+voir ./interfaceMastermind.jpg
+
+Question 2 : Comment stocker une instance de Mastermind dans une SESSION PHP ?
+https://www.php.net/manual/fr/reserved.variables.session.php
+https://www.php.net/manual/fr/language.oop5.basic.php

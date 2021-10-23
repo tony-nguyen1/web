@@ -1,0 +1,17 @@
+1. La balise <header></header> est utilisé pour le bandeau.
+
+2. L'élément <nav></nav> contient la navigation du site
+
+3. <h1> <h2> ... contiennent les titres.
+
+4.  <button> va représenter "Commander" de type submit
+
+5. L'<input> dans un form permet de receuillir la quantité d'article.
+Elle sera de type="number" + name.
+
+6. <form> avec action="Nom.php" qui dit où trouver le php et method qui décrit comment info est envoyé.
+Quelle fichier sur serveur va traiter le fichier.
+
+7. Les liens <a> (pour anchor: encre), attribut href qui permet de dire où on va
+
+8. Encre <a> avec un id
