@@ -52,6 +52,7 @@ class Voiture {
         $rep->setFetchMode(PDO::FETCH_CLASS, 'Voiture');//on veut récuper des instances de la class Voiture
         return $rep->fetchAll();
     }
+        
 }
 ?>
 
