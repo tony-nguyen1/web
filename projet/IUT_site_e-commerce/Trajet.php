@@ -1,13 +1,16 @@
 <?php
    
-class Utilisateur {
+class Trajet {
    
-    private $login;
-    private $nom;
-    private $prenom;
+    private $id;
+    private $depart;
+    private $arrivee;
+    private $date;
+    private $nbplaces;
+    private $prix;
+    private $conducteur_login;
    
-    
-    // un constructeur
+
     public function __construct($data=NULL) {
         foreach($data as $key => $value) {
             $this->$key = $value;
@@ -24,13 +27,12 @@ class Utilisateur {
               
     // une methode d'affichage.
     public function afficher() {
-      // À compléter dans le prochain exercice
-      echo "<p> Utilisateur $this->login - $this->nom $this->prenom </p>";
+        echo "<p> Trajet $this->depart -> $this->arrivee, $this->date  $this->prix €  $this->nbplaces $this->conducteur_login </p>";
     }
 
-    public static function getAllUtilisateurs() {
-        $rep = Model::getPDO()->query("SELECT * FROM utilisateur");
-        $rep->setFetchMode(PDO::FETCH_CLASS, 'Utilisateur');
+    public static function getAllTrajets() {
+        $rep = Model::getPDO()->query("SELECT * FROM trajet");
+        $rep->setFetchMode(PDO::FETCH_CLASS, 'Trajet');
         return $rep->fetchAll();
     }
 }
