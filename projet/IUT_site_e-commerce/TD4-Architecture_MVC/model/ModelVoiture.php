@@ -7,11 +7,14 @@
      * 
     **/
 require_once File::build_path(array("model","Model.php"));
-class ModelVoiture {
+class ModelVoiture extends Model{
    
     private $marque;
     private $couleur;
     private $immatriculation;
+    protected static $object = 'voiture';
+    protected static $primary='immatriculation';
+
    
     public function getMarque() {
         return $this->marque;
@@ -55,11 +58,11 @@ class ModelVoiture {
       echo "<p> Voiture $this->immatriculation de marque $this->marque (couleur $this->couleur) </p>";
     }*/
 
-    public static function getAllVoitures() {
+    /*public static function getAllVoitures() {
         $rep = Model::getPDO()->query("SELECT * FROM voiture");//écriture de la requête
         $rep->setFetchMode(PDO::FETCH_CLASS, 'ModelVoiture');//on veut récuper des instances de la class Voiture
         return $rep->fetchAll();
-    }
+    }*/
 
     public static function getVoitureByImmat($immat) {
         $sql = "SELECT * from voiture WHERE immatriculation=:nom_tag";

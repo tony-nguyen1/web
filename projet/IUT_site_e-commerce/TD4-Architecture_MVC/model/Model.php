@@ -36,6 +36,39 @@ class Model {
         
         return self::$pdo;
     }
+
+    public static function selectAll() {
+        $table_name = static::$object;
+        $class_name = 'Model'.ucfirst($table_name);
+
+        $rep = Model::getPDO()->query("SELECT * FROM {$table_name}");//écriture de la requête
+        $rep->setFetchMode(PDO::FETCH_CLASS, $class_name);//on veut récuper des instances de la class Voiture
+        return $rep->fetchAll();
+    }
+
+    public static function select($primary_value) {
+        $table_name = static::$object;
+        $class_name = 'Model'.ucfirst($table_name);
+        $primary_key = static::$primary;
+
+        $sql = "SELECT * FROM {$table_name} WHERE {$primary_key}=:uneValeur";
+        // Préparation de la requête
+        $req_prep = Model::getPDO()->prepare($sql);
+    
+        $values = array(
+            "uneValeur" => $primary_value
+        );
+        // On donne les valeurs et on exécute la requête	 
+        $req_prep->execute($values);
+    
+        // On récupère les résultats comme précédemment
+        $req_prep->setFetchMode(PDO::FETCH_CLASS, $class_name);
+        $tab_obj = $req_prep->fetchAll();
+        // Attention, si il n'y a pas de résultats, on renvoie false
+        if (empty($tab_obj))
+            return false;
+        return $tab_obj[0];
+    }
 }
 ?>
 

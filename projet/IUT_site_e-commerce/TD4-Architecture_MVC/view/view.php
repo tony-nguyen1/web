@@ -17,5 +17,10 @@ $filepath = File::build_path(array("view", $controller, "$view.php"));
 require $filepath;
 ?>
     </body>
+    <footer>
+        <p style="border: 1px solid black;text-align:right;padding-right:1em;">
+            Site de covoiturage de Tony Nguyen
+        </p>
+    </footer>
 </html>
 
