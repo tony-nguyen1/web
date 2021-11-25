@@ -49,5 +49,11 @@ class ControllerVoiture {
 
         ControllerVoiture::readAll();
     }
+    public static function error() {
+        $controller='voiture';
+        $pagetitle='Erreur';
+        $view = 'error';
+        require File::build_path(array("view","view.php"));
+    }
 }
 ?>

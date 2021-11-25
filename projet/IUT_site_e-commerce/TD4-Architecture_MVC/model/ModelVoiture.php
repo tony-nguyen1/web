@@ -42,8 +42,10 @@ class ModelVoiture {
     // un constructeur
     public function __construct($data = NULL) {
         //var_dump($data);
-        foreach($data as $key => $value) {
-            $this->$key = $value;
+        if (!empty($data)) {
+            foreach($data as $key => $value) {
+                $this->$key = $value;
+            }
         }
     } 
               
