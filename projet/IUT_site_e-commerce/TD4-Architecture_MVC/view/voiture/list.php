@@ -8,7 +8,8 @@
         <?php
         foreach ($tab_v as $v) {
             $vImmatriculation = htmlspecialchars($v->getImmatriculation());
-            echo '<p><a href="index.php?action=read&immat='.$vImmatriculation.'"> Voiture d\'immatriculation ' . $vImmatriculation . '.</a></p>';
+            $lienImmatriculation = rawurlencode($v->getImmatriculation());
+            echo '<p><a href="index.php?action=read&immat='.$lienImmatriculation.'"> Voiture d\'immatriculation ' . $vImmatriculation . '.</a></p>';
         }
         ?>
     </body>
