@@ -1,0 +1,1 @@
+Ctrl+Shift+F pour chercher dans tous les fichiers et être sûr de ne pas avoir oublier un require
