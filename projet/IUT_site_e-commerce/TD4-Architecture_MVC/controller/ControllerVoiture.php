@@ -49,12 +49,43 @@ class ControllerVoiture {
         $v = new ModelVoiture($array);
         $v->save();
 
-        ControllerVoiture::readAll();
+        $tab_v = ModelVoiture::selectAll();
+        $controller='voiture';
+        $pagetitle='Voiture crée';
+        $view = 'created';
+        require File::build_path(array("view","view.php"));
     }
     public static function error() {
         $controller='voiture';
         $pagetitle='Erreur';
         $view = 'error';
+        require File::build_path(array("view","view.php"));
+    }
+    public static function update($immat) {
+        $v = ModelVoiture::select($immat);  
+        $controller='voiture';
+        $pagetitle='Modification d\'une voiture';
+        if (empty($v)) {
+            $view = 'error';
+        } else {
+            $view = 'update';
+        }
+        require File::build_path(array("view","view.php"));
+    }
+    public static function updated($immat) {
+        $v = ModelVoiture::select($immat);
+        $data = array(
+            "immatriculation" => $_GET["immatriculation"],
+            "marque" => $_GET["marque"],
+            "couleur" => $_GET["couleur"]
+        );
+
+        ModelVoiture::update($data);
+        $tab_v = ModelVoiture::selectAll();
+        
+        $controller='voiture';
+        $pagetitle='Voiture modifié';
+        $view = 'updated';
         require File::build_path(array("view","view.php"));
     }
 }

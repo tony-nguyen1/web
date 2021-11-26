@@ -44,7 +44,6 @@ class ModelVoiture extends Model{
    
     // un constructeur
     public function __construct($data = NULL) {
-        //var_dump($data);
         if (!empty($data)) {
             foreach($data as $key => $value) {
                 $this->$key = $value;
@@ -97,6 +96,21 @@ class ModelVoiture extends Model{
         );
         // On donne les valeurs et on exécute la requête	 
         $req_prep->execute($values);    
+    }
+
+    public static function update($data) {
+        $sql = "UPDATE voiture SET marque=:marque,couleur=:couleur WHERE immatriculation = :immatriculation";
+        // Préparation de la requête
+        $req_prep = Model::getPDO()->prepare($sql);
+    
+        $values = array(
+            ":marque" => $data['marque'],
+            ":couleur" => $data['couleur'],
+            ":immatriculation" => $data['immatriculation']
+        );
+        
+        // On donne les valeurs et on exécute la requête	 
+        $req_prep->execute($values);
     }
 
 }

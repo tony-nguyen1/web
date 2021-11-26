@@ -6,7 +6,7 @@
     </head>
     <body>
         <header>
-            <a href="index.php?action=readAll">Voitures</a>
+            <a href="index.php?action=readAll&controller=voiture">Voitures</a>
             <a href="index.php?action=readAll&controller=utilisateur">Utilisateur</a>
             <a href="index.php?action=readAll&controller=trajet">Trajet</a>
         </header>
