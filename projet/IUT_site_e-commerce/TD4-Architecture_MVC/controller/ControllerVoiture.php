@@ -88,5 +88,15 @@ class ControllerVoiture {
         $view = 'updated';
         require File::build_path(array("view","view.php"));
     }
+    public static function delete($immat) {
+        $v = ModelVoiture::deleteByImmat($immat);  
+        $controller='voiture';
+        $pagetitle='Supression d\'une voiture';
+        $view = 'deleted';
+
+        $tab_v = ModelVoiture::selectAll();
+
+        require File::build_path(array("view","view.php"));
+    }
 }
 ?>
