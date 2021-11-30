@@ -69,6 +69,83 @@ class Model {
             return false;
         return $tab_obj[0];
     }
+
+    public static function delete($primary_value) {
+        $table_name = static::$object;
+        $class_name = 'Model'.ucfirst($table_name);
+        $primary_key = static::$primary;
+
+        $sql = "DELETE FROM {$table_name} WHERE {$primary_key} = :nom_tag";
+        // Préparation de la requête
+        $req_prep = Model::getPDO()->prepare($sql);
+    
+        $values = array(
+            "nom_tag" => $primary_value
+        );
+        // On donne les valeurs et on exécute la requête	 
+        $req_prep->execute($values);
+    }
+
+    public static function update($data) {
+        $table_name = static::$object;
+        $class_name = 'Model'.ucfirst($table_name);
+        $primary_key = static::$primary;
+        $sSet = "";
+        $values = array();
+
+        //écriture de la requête
+        foreach ($data as $cle => $valeur) {
+            if (strcmp($cle, $primary_key) != 0) {
+                $sSet = $sSet . "{$cle}=:{$cle}, ";
+            }
+
+            $values[":{$cle}"] = $valeur; //préparation des valeurs
+        }
+        $sSet = rtrim($sSet, ", ");
+
+        $sql = "UPDATE {$table_name} SET {$sSet} WHERE {$primary_key} = :immatriculation";
+        
+
+        // Préparation de la requête
+        $req_prep = Model::getPDO()->prepare($sql);
+    
+        
+        // On donne les valeurs et on exécute la requête	 
+        $req_prep->execute($values);
+    }
+
+    public static function save($data) {
+        $table_name = static::$object;
+        $class_name = 'Model'.ucfirst($table_name);
+        $primary_key = static::$primary;
+        $attributes = "";
+        $tagValues = "";
+        $values = array();
+
+        //écriture de la requête
+        foreach ($data as $cle => $valeur) {
+            //écriture des attibuts
+            $attributes = $attributes . "{$cle}, ";
+
+            //écriture des tags
+            $tagValues = $tagValues . ":{$cle}, ";
+
+            //préparation des valeurs
+            $values[":{$cle}"] = $valeur; 
+        }
+        $attributes = rtrim($attributes, ", ");
+        $tagValues = rtrim($tagValues, ", ");
+        $sql = "INSERT INTO voiture ({$attributes}) VALUES ({$tagValues})";
+        
+        echo $sql;
+        
+        // Préparation de la requête
+        $req_prep = Model::getPDO()->prepare($sql);
+    
+        
+        // On donne les valeurs et on exécute la requête	 
+        $req_prep->execute($values);    
+    }
 }
 ?>
 

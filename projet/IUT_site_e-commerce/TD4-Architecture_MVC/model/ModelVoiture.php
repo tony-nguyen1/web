@@ -63,7 +63,7 @@ class ModelVoiture extends Model{
         return $rep->fetchAll();
     }*/
 
-    public static function getVoitureByImmat($immat) {
+    /*public static function getVoitureByImmat($immat) {
         $sql = "SELECT * from voiture WHERE immatriculation=:nom_tag";
         // Préparation de la requête
         $req_prep = Model::getPDO()->prepare($sql);
@@ -82,9 +82,9 @@ class ModelVoiture extends Model{
         if (empty($tab_voit))
             return false;
         return $tab_voit[0];
-    }
+    }*/
 
-    public function save() {
+    /*public function save() {
         $sql = "INSERT INTO voiture (marque, couleur, immatriculation) VALUES (:marque, :couleur, :immatriculation)";
         // Préparation de la requête
         $req_prep = Model::getPDO()->prepare($sql);
@@ -96,9 +96,9 @@ class ModelVoiture extends Model{
         );
         // On donne les valeurs et on exécute la requête	 
         $req_prep->execute($values);    
-    }
+    }*/
 
-    public static function update($data) {
+    /*public static function update($data) {
         $sql = "UPDATE voiture SET marque=:marque,couleur=:couleur WHERE immatriculation = :immatriculation";
         // Préparation de la requête
         $req_prep = Model::getPDO()->prepare($sql);
@@ -111,9 +111,9 @@ class ModelVoiture extends Model{
         
         // On donne les valeurs et on exécute la requête	 
         $req_prep->execute($values);
-    }
+    }*/
 
-    public static function deleteByImmat($immat) {
+    /*public static function deleteByImmat($immat) {
         $sql = "DELETE FROM voiture WHERE immatriculation = :nom_tag";
         // Préparation de la requête
         $req_prep = Model::getPDO()->prepare($sql);
@@ -123,7 +123,7 @@ class ModelVoiture extends Model{
         );
         // On donne les valeurs et on exécute la requête	 
         $req_prep->execute($values);
-    }
+    }*/
 
 }
 ?>

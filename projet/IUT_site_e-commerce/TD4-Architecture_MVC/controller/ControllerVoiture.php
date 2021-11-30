@@ -36,18 +36,18 @@ class ControllerVoiture {
         }*/
         $controller='voiture';
         $pagetitle='Création d\'une voiture';
-        $view = 'create';
+        $view = 'update';
+        $action = "create";
         require File::build_path(array("view","view.php"));
     }
     public static function created() {
-
         $array = array(
             "immatriculation" => $_GET["immatriculation"],
             "marque" => $_GET["marque"],
             "couleur" => $_GET["couleur"]
         );
-        $v = new ModelVoiture($array);
-        $v->save();
+
+        ModelVoiture::save($array);
 
         $tab_v = ModelVoiture::selectAll();
         $controller='voiture';
@@ -70,6 +70,7 @@ class ControllerVoiture {
         } else {
             $view = 'update';
         }
+        $action = "update";
         require File::build_path(array("view","view.php"));
     }
     public static function updated($immat) {
@@ -89,7 +90,7 @@ class ControllerVoiture {
         require File::build_path(array("view","view.php"));
     }
     public static function delete($immat) {
-        $v = ModelVoiture::deleteByImmat($immat);  
+        $v = ModelVoiture::delete($immat);  
         $controller='voiture';
         $pagetitle='Supression d\'une voiture';
         $view = 'deleted';
