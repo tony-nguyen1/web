@@ -1,0 +1,43 @@
+<?php
+    //reception commande
+    $commande[]=[];
+    if (!empty($_POST)){
+        $commande= $_POST;
+    }
+
+?>
+<?php //connexion base de donnée
+    $username;
+    $password;
+    $bdd= new PDO('mysql:host=mysql.etu.umontpellier.fr; dbname=*****;charset=UTF8',
+                    $username,$password);
+    //récupération des données
+    $sqlcommande = 'SELECT nom, prix FROM ****';
+    $donnee[]= array();
+    foreach ($bdd->query($sqlcommande) as $reponse){
+        $donnee[$reponse['nom']]= $reponse['prix'];
+    }
+
+?>
+<?php
+    //fonction pour obtenir le prix d'un produit
+    function getprix ($nomproduit){
+        global $donnee;
+        foreach($donnee as $nom =>$prix){
+            if ($nom = $nomproduit){
+                return $prix;
+            }
+        }
+        }
+?>
+<?php
+    //affichage html du panier
+    $prix;
+    $total=0;
+    echo "<ul>";
+    foreach ($commande as $produit => $quantite){
+        echo "<li>",$produit,"  ×",$quantite,"</li>";
+        $total+= getprix($nom)*$quantite;
+    }
+    echo "</ul>","<p>Total: ",$total,"</p>";
+?>
