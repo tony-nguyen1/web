@@ -29,6 +29,10 @@ $txtProduit = $txtProduit . "stock: {$vStock}<br>";
 
 
 $html = "<p>{$txtProduit}</p>";
+//création du formulaire
+$html = $html . "<div><form action='panier.php' method='get'>";
+$html = $html . "<input type='number' id='".$vIdProduit."' name='".$vNom."' min='1' max='".$vStock."'>";
+$html = $html . "<input type='submit' value='Ajouter au panier'></form></div>";
 
 
 echo $html;
