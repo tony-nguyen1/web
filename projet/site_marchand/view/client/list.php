@@ -5,7 +5,7 @@ foreach ($tab_c as $c) {
     $txtClient = "";
 
     $lienEmail = rawurlencode($c->get("email"));
-    $link = "<a href='index.php?action=read&controller={$controller}&idProduit={$lienEmail}'>Détails</a>";    
+    $link = "<a href='index.php?action=read&controller={$controller}&email={$lienEmail}'>Détails</a>";    
 
 
     $vEmail = htmlspecialchars($c->get("email"));

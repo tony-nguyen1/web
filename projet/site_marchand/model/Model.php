@@ -115,9 +115,10 @@ class Model {
     }
 
     public static function save($data) {
-        $table_name = static::$object;
-        $class_name = 'Model'.ucfirst($table_name);
+        $table_name = ucfirst(static::$object)."s";
+        $class_name = 'Model'.ucfirst(static::$object);
         $primary_key = static::$primary;
+        
         $attributes = "";
         $tagValues = "";
         $values = array();
@@ -135,9 +136,9 @@ class Model {
         }
         $attributes = rtrim($attributes, ", ");
         $tagValues = rtrim($tagValues, ", ");
-        $sql = "INSERT INTO voiture ({$attributes}) VALUES ({$tagValues})";
+        $sql = "INSERT INTO {$table_name} ({$attributes}) VALUES ({$tagValues})";
         
-        echo $sql;
+        //echo $sql;
         
         // Préparation de la requête
         $req_prep = Model::getPDO()->prepare($sql);

@@ -1,5 +1,6 @@
 <?php
 require_once File::build_path(array("model","ModelClient.php"));; // chargement du modèle
+require_once File::build_path(array("lib","Security.php"));
 class ControllerClient {
     protected static $object = 'client';
 
@@ -10,7 +11,8 @@ class ControllerClient {
         $pagetitle='Liste des clients';
         require File::build_path(array("view","view.php"));
     }
-    public static function read($email) {
+    public static function read() {
+        $email = $_GET["email"];
         $c = ModelClient::select($email);  
         $controller='client';
         $pagetitle='Détails d\'un client';
@@ -21,6 +23,72 @@ class ControllerClient {
             $view = 'detail';
             require File::build_path(array("view","view.php"));
         }
+    }
+    public static function create() {
+        $controller='client';
+        $pagetitle='Inscription';
+        $view = 'update';
+        $action = "create";
+        require File::build_path(array("view","view.php"));
+    }
+    public static function created() {
+        if (filter_var($_GET["identifiant"], FILTER_VALIDATE_EMAIL) == false) {
+            echo "adresse email non valide mais c'est pas grave";
+        } else {
+            echo "adresse email validé par le serveur";
+        }
+
+        $array = array(
+            "email" => $_GET["identifiant"],
+            "motDePasse" => Security::hacher($_GET["mdp"]),
+            "nom" => $_GET["nom"],
+            "prenom" => $_GET["prenom"],
+            "ville" => $_GET["ville"],
+            "adresse" => $_GET["adresse"],
+            "telephone" => $_GET["couleur"]
+        );
+
+        ModelClient::save($array);
+
+        $tab_c = ModelClient::selectAll();
+        $controller='client';
+        $pagetitle='Inscription reussi';
+        $view = 'created';
+        require File::build_path(array("view","view.php"));
+    }
+    public static function connect() {
+        $controller='client';
+        $pagetitle='Connexion';
+        $view = 'connect';
+        require File::build_path(array("view","view.php"));
+    }
+    public static function connected() {
+
+        $login = $_GET["identifiant"];
+        $mdp = Security::hacher($_GET["mdp"]);
+
+        if (ModelClient::checkPassword($login,$mdp)) {
+            $_SESSION['login'] = $login;
+
+            $controller='client';
+            $pagetitle='Connecté';
+            $view = 'detail';
+
+            $c = ModelClient::select($login);
+
+            require File::build_path(array("view","view.php"));
+        } else {
+            echo "échec";
+        }
+    }
+    public static function deconnect() {
+        $_SESSION['login'] = "";
+        session_unset();
+        session_destroy(); 
+        setcookie(session_name(),'',time()-1);
+
+        echo "Déconnexion";
+        static::readAll();
     }
 }
 ?>

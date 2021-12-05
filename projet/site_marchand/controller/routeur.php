@@ -1,6 +1,8 @@
 <?php
 require_once File::build_path(array("controller","ControllerProduit.php"));
 require_once File::build_path(array("controller","ControllerClient.php"));
+require_once File::build_path(array("controller","ControllerCommande.php"));
+require_once File::build_path(array("controller","ControllerLignescommande.php"));
 
 $controller;
 $controller_class;
@@ -18,18 +20,13 @@ if (isset($_GET['action'])) {
 } else {
     $action = 'readAll';
 }
-if (isset($_GET['idProduit'])) {
-    $param = $_GET["idProduit"];
-} else {
-    $param = NULL;
-}
 
 
 $controller_class = "Controller".ucfirst($controller);
 $class_methods = get_class_methods($controller_class);
 //vérification, la classe existe? Si oui, est-ce qu'elle a la méthode demandé?
 if (class_exists($controller_class) && in_array($action, $class_methods)) {
-    $controller_class::$action($param); 
+    $controller_class::$action();
 } else {
     echo $controller_class;
     //ControllerVoiture::error();

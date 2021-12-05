@@ -3,7 +3,7 @@
 $html = "";
 $txtProduit = "";
 
-//$lienIdProduit = rawurlencode($p->get("idProduit"));
+$lienIdProduit = rawurlencode($p->get("idProduit"));
 
 $link = "<a href='index.php?action=read&controller={$controller}&idProduit={$lienIdProduit}'>En savoir plus</a>";
     

@@ -34,5 +34,18 @@ class ModelClient extends Model{
             $this->telelphonne = $data["telelphonne"];
         }
     }
+
+    public static function checkPassword($login, $mot_de_passe_hache) {
+        $clients = static::selectAll();
+
+        foreach($clients as $client) {
+            if (strcmp($login, $client->get("email")==0 && 
+            strcmp($mot_de_passe_hache, $client->get("motDePasse")==0))) {
+                return true;
+            }
+        }
+
+        return false;
+    }
 }
 ?>

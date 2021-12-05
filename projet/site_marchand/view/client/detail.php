@@ -22,8 +22,7 @@ $txtClient = $txtClient . "ville: {$vVille} <br>";
 $txtClient = $txtClient . "adresse: {$vAdresse} <br>";
 $txtClient = $txtClient . "telephone: {$vTelephone} <br>";
 
-$txtClient = $txtClient . $link;
 
-$txtClient = "<li><p>{$txtClient}</p></li>";
-$html = $html . $txtClient;
+$txtClient = "<p>{$txtClient}</p>";
+echo "<p>{$txtClient}</p>";
 ?>
