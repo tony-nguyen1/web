@@ -1,3 +1,9 @@
+<?php 
+
+session_start();
+
+?>
+
 <!DOCTYPE html>
 <html lang="fr">
 <head>
@@ -15,21 +21,34 @@
     
     $envoi_Formu = true;
         if (!empty($_POST["identifiant"]) && !empty($_POST["mdp"]) && !empty($_POST["mdp_confirm"])){ // On regarde si y a eu "bon" envoi du formulaire
+           
             if($_POST["mdp"] == $_POST["mdp_confirm"]){ // faudrait aussi regarder que c'est une bonne adresse mail qui est envoyé
 
-                if()
+                $dbh = new PDO('mysql:host=localhost;dbname=sitemarchand; charset=UTF8', 'root', 'root');
 
-                else {
-                echo "Un mail a été envoyé à ", $_POST["identifiant"] ,", Veuillez valider votre compte"; //jsp si je garde le fait de l'envoyer sur le mail sah mdr
-                $envoi_Formu = false;
+                $email = $_POST["identifiant"];
+                $stmt = $dbh->prepare("SELECT * FROM users WHERE email=?");
+                $stmt->execute([$email]); 
+                $user = $stmt->fetch();
+
+
+                if ($user) { //email existe
+
+                    echo "Vous avez déjà une adresse mail associée";
+                } 
+
+                else { //email existe pas
+                    
+                    echo "Un mail a été envoyé à ", $_POST["identifiant"] ,", Veuillez valider votre compte"; //jsp si je garde le fait de l'envoyer sur le mail sah mdr
+                    $envoi_Formu = false;
                 }
-                // faire tous les traitement dans la bdd (voir c'est quoi le nom des tables, etc etc)
+
+
             }
             
             else{
                 echo "Mot de passes incohérents";
             }
-
 
         }
 
