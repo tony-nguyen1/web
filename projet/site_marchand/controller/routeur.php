@@ -3,6 +3,7 @@ require_once File::build_path(array("controller","ControllerProduit.php"));
 require_once File::build_path(array("controller","ControllerClient.php"));
 require_once File::build_path(array("controller","ControllerCommande.php"));
 require_once File::build_path(array("controller","ControllerLignescommande.php"));
+require_once File::build_path(array("controller","ControllerPanier.php"));
 
 $controller;
 $controller_class;

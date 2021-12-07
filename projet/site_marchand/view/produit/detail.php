@@ -30,9 +30,13 @@ $txtProduit = $txtProduit . "stock: {$vStock}<br>";
 
 $html = "<p>{$txtProduit}</p>";
 //création du formulaire
-$html = $html . "<div><form action='panier.php' method='get'>";
-$html = $html . "<input type='number' id='".$vIdProduit."' name='".$vNom."' min='1' max='".$vStock."'>";
-$html = $html . "<input type='submit' value='Ajouter au panier'></form></div>";
+$html = $html . "
+<div><form action='index.php' method='get'>
+<input type=\"hidden\" value=\"ajouterProduit\" name=\"action\"/>
+<input type=\"hidden\" value=\"panier\" name=\"controller\"/>
+<input type=\"hidden\" name=\"idProduit\" value='{$p->get('idProduit')}'/>
+<input type='number' id='nbPrdtAcht' name='nbProduitAchete' min='1' max='".$vStock."'>
+<input type='submit' value='Ajouter au panier'></form></div>";
 
 
 echo $html;

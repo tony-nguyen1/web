@@ -12,6 +12,7 @@
             <a href="index.php?action=connect&controller=client">Connexion</a>
             <a href="index.php?action=deconnect&controller=client">Déconnexion</a>
             <a href="index.php?action=historique&controller=commande">Mes commandes</a>
+            <a href="index.php?action=read&controller=panier">Panier</a>
         </header>
         
 <?php
