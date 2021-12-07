@@ -8,10 +8,20 @@
         <header>
             <a href="index.php?action=readAll&controller=produit">Produits</a>
             <a href="index.php?action=readAll&controller=client">Clients</a>
-            <a href="index.php?action=create&controller=client">Inscription</a>
-            <a href="index.php?action=connect&controller=client">Connexion</a>
-            <a href="index.php?action=deconnect&controller=client">Déconnexion</a>
-            <a href="index.php?action=historique&controller=commande">Mes commandes</a>
+<?php
+$encre = "";
+if (isset($_SESSION['login'])) { 
+    $encre = "<a href='index.php?action=deconnect&controller=client'>Déconnexion</a>";
+    $encre = $encre . " <a href='index.php?action=historique&controller=commande'>Mes commandes</a>";
+} else {
+    $encre = "
+        <a href='index.php?action=create&controller=client'>Inscription</a>
+        <a href='index.php?action=connect&controller=client'>Connexion</a>
+    ";
+}
+echo $encre;
+?>
+            
             <a href="index.php?action=read&controller=panier">Panier</a>
         </header>
         
