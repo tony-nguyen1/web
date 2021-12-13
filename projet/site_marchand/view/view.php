@@ -35,7 +35,7 @@ require $filepath;
     
         <footer>
             <p style="border: 1px solid black;text-align:right;padding-right:1em;">
-                Site marchand de Laurent Antoinette - Romain Capillo - Tony Nguyen
+                Site marchand de Laurent Antoinette - Romain Campillo - Tony Nguyen
             </p>
         </footer>
     </body>

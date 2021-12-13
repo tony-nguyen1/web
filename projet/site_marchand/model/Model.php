@@ -109,7 +109,6 @@ class Model {
         // Préparation de la requête
         $req_prep = Model::getPDO()->prepare($sql);
     
-        echo $sql;
         // On donne les valeurs et on exécute la requête	 
         $req_prep->execute($values);
     }

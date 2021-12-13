@@ -36,7 +36,6 @@ class ControllerCommande {
         
         //créer une ligne commandes pour chaque produit acheté
         $idCommande = ModelCommande::getLastCommandeId();
-        echo "<p>{$idCommande}</p>";
         ControllerPanier::create($idCommande);
         //TODO pour chaque produit, décrementer des stocks la quantite achete
 
@@ -49,6 +48,23 @@ class ControllerCommande {
         $view = 'enregistre';
         $pagetitle='Liste des commandes';
         
+        require File::build_path(array("view","view.php"));
+    }
+    public function acheter() {
+        $id = $_GET[idCommande];
+        $data = array(
+            "idCommande" => $id,
+            "etat" => "achetée"
+        );
+        ModelCommande::update($data);
+
+        $controller='commande';
+        $view = 'achete';
+        $pagetitle='Commande achetée';
+
+        $email = $_SESSION['login'];
+        $tab_c = ModelCommande::findCommandesByEmail($email);
+
         require File::build_path(array("view","view.php"));
     }
 }
