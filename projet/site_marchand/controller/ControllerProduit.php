@@ -47,22 +47,21 @@ class ControllerProduit {
         require File::build_path(array("view","view.php"));
     }
     public static function updated() {
-        $idProduit = $_GET['idProduit'];
-        $v = ModelProduit::select($idProduit);
-        /*$data = array(
-            "immatriculation" => $_GET["immatriculation"],
-            "marque" => $_GET["marque"],
-            "couleur" => $_GET["couleur"]
-        );*/
+        //$idProduit = $_GET['idProduit'];
+        //$v = ModelProduit::select($idProduit);
+        /*var_dump($_GET);
+        $data = array(
+            "idProduit" => $_GET["idProduit"],
+            "stock" => $_GET["stock"]
+        );
 
-        /*ModelProduit::update($data);//TODO
+        ModelProduit::update($data);
         $tab_v = ModelProduit::selectAll();
         
         $controller='produit';
         $pagetitle='Produit modifié';
         $view = 'updated';
-        require File::build_path(array("view","view.php"));
-        */
+        require File::build_path(array("view","view.php"));*/
     }
 }
 ?>

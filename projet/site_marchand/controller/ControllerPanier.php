@@ -51,5 +51,52 @@ class ControllerPanier {
 
         return $tab_panier;
     }
+    public static function clear() {
+        $_SESSION['panier'] = array();
+    }
+
+    public static function clear2() {
+        static::clear();
+
+        $controller='panier';
+        $view = 'panier';
+        $pagetitle='Panier courant';
+        
+        require File::build_path(array("view","view.php"));
+    }
+
+    public static function create($idCommande) {
+        foreach (array_keys($_SESSION['panier']) as $idPrdt) {
+            $unProduit = ModelProduit::select($idPrdt);
+            
+            $qte = $_SESSION['panier'][$idPrdt];
+            $stock = $unProduit->get("stock");
+
+            //Si il veut en acheter trop, il achète tout
+            if ($qte > $stock) {
+                $qte = $stock;
+                $nvStock = 0;
+            } else {
+                $nvStock = $stock - $qte;
+            }
+            $montant = $unProduit->get("prix")*$qte;
+
+            $data = array(
+                "idCommande" => $idCommande,
+                "idProduit" => $idPrdt,
+                "quantite" => $qte,
+                "montant" => $stock
+            );
+    
+            ModelLignesCommande::save($data);
+
+            //décrémenter les stocks
+            $data2 = array(
+                "idProduit" => $idPrdt,
+                "stock" => $nvStock
+            );
+            ModelProduit::update($data2);
+        }
+    }
 }
 ?>

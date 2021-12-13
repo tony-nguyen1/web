@@ -26,7 +26,7 @@ echo $encre;
         </header>
         
 <?php
-if (isset($_SESSION['login'])) { echo 'Connecté en tant que '.$_SESSION['login']; }
+if (isset($_SESSION['login'])) { echo '<p>Connecté en tant que '.$_SESSION['login']."</p>"; }
 // Si $controleur='voiture' et $view='list',
 // alors $filepath="/chemin_du_site/view/voiture/list.php"
 $filepath = File::build_path(array("view", $controller, "$view.php"));

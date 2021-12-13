@@ -44,7 +44,7 @@ class ModelLignescommande extends Model{
         $req_prep->execute($values);
     
         // On récupère les résultats comme précédemment
-        $req_prep->setFetchMode(PDO::FETCH_CLASS, "Lignescommande");
+        $req_prep->setFetchMode(PDO::FETCH_CLASS, "ModelLignescommande");
         $tab_obj = $req_prep->fetchAll();
         // Attention, si il n'y a pas de résultats, on renvoie false
         if (empty($tab_obj))

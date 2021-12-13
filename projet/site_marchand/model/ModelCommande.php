@@ -52,5 +52,9 @@ class ModelCommande extends Model{
             return false;
         return $tab_obj;
     }
+
+    public static function getLastCommandeId() {
+        return Model::getPDO()->lastInsertId();
+    }
 }
 ?>

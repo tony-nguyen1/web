@@ -87,8 +87,8 @@ class Model {
     }
 
     public static function update($data) {
-        $table_name = static::$object;
-        $class_name = 'Model'.ucfirst($table_name);
+        $table_name = ucfirst(static::$object)."s";
+        $class_name = 'Model'.ucfirst(static::$object);
         $primary_key = static::$primary;
         $sSet = "";
         $values = array();
@@ -103,13 +103,13 @@ class Model {
         }
         $sSet = rtrim($sSet, ", ");
 
-        $sql = "UPDATE {$table_name} SET {$sSet} WHERE {$primary_key} = :immatriculation";
+        $sql = "UPDATE {$table_name} SET {$sSet} WHERE {$primary_key} = :{$primary_key}";
         
 
         // Préparation de la requête
         $req_prep = Model::getPDO()->prepare($sql);
     
-        
+        echo $sql;
         // On donne les valeurs et on exécute la requête	 
         $req_prep->execute($values);
     }

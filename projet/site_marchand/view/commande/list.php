@@ -7,9 +7,9 @@ foreach ($tab_c as $c) {
     $lienImmatriculation = rawurlencode($v->getImmatriculation());
     */
 
-    $lienIdProduit = rawurlencode($c->get("idCommande"));
+    $lienIdCommande = rawurlencode($c->get("idCommande"));
 
-    $link = "<a href='index.php?action=read&controller=lignesCommande&idProduit={$lienIdProduit}'>En savoir plus</a>";
+    $link = "<a href='index.php?action=readByIdCommande&controller=lignescommande&idCommande={$lienIdCommande}'>En savoir plus</a>";
     
 
     $vIdCommande = htmlspecialchars($c->get("idCommande"));

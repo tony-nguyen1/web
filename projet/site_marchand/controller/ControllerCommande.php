@@ -1,6 +1,7 @@
 <?php
-require_once File::build_path(array("model","ModelCommande.php"));; // chargement du modèle
+require_once File::build_path(array("model","ModelCommande.php")); // chargement du modèle
 require_once File::build_path(array("lib","Security.php"));
+require_once File::build_path(array("controller","ControllerPanier.php"));;
 class ControllerCommande {
     protected static $object = 'commande';
 
@@ -18,8 +19,37 @@ class ControllerCommande {
         $view = 'list';
         $pagetitle='Historique';
         
+        require File::build_path(array("view","view.php"));    
+    }
+    public static function create() {
+        //créer une une commande
+        $date = getdate();
+        $dat = "{$date['year']}-{$date['mon']}-{$date['mday']}";
+        $data = array(
+            "idCommande" => NULL,
+            "date" => $dat,
+            "email" => $_SESSION['login'],
+            "etat" => "enCours"
+        );
+        ModelCommande::save($data);
+
+        
+        //créer une ligne commandes pour chaque produit acheté
+        $idCommande = ModelCommande::getLastCommandeId();
+        echo "<p>{$idCommande}</p>";
+        ControllerPanier::create($idCommande);
+        //TODO pour chaque produit, décrementer des stocks la quantite achete
+
+        //vider le panier
+        ControllerPanier::clear();
+
+        $tab_c = ModelCommande::selectAll();
+
+        $controller='commande';
+        $view = 'enregistre';
+        $pagetitle='Liste des commandes';
+        
         require File::build_path(array("view","view.php"));
-        var_dump($tab_c);        
     }
 }
 ?>

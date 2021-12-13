@@ -38,9 +38,9 @@ class ModelClient extends Model{
     public static function checkPassword($login, $mot_de_passe_hache) {
         $clients = static::selectAll();
 
-        foreach($clients as $client) {
-            if (strcmp($login, $client->get("email")==0 && 
-            strcmp($mot_de_passe_hache, $client->get("motDePasse")==0))) {
+        foreach($clients as $c) {
+            if (strcmp($login, $c->get("email")) == 0 &&
+            strcmp($mot_de_passe_hache, $c->get("motDePasse")) == 0) {
                 return true;
             }
         }

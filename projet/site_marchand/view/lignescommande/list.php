@@ -20,7 +20,7 @@ foreach ($tab_lp as $lp) {
     
     $txtProduit = "N° ligne de la commande: {$idLigneCommande}<br>";
     $txtProduit = $txtProduit . "N° de la commande: {$idCommande}<br>";
-    $txtProduit = $txtProduit . "N° du produit: {$link}<br>";
+    $txtProduit = $txtProduit . "Produit: {$link}<br>";
     $txtProduit = $txtProduit . "Qte: {$quantite}<br>";
     $txtProduit = $txtProduit . "Montant: {$montant}€<br>";
 

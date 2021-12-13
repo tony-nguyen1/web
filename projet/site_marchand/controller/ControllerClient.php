@@ -78,7 +78,10 @@ class ControllerClient {
 
             require File::build_path(array("view","view.php"));
         } else {
-            echo "échec";
+            $controller='client';
+            $pagetitle='Connexion';
+            $view = 'connectEchec';
+            require File::build_path(array("view","view.php"));
         }
     }
     public static function deconnect() {
