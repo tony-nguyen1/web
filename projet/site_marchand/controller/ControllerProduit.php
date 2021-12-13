@@ -63,5 +63,44 @@ class ControllerProduit {
         $view = 'updated';
         require File::build_path(array("view","view.php"));*/
     }
+    public static function readFiltre() {
+        $marque = $_GET["marque"];
+        $categorie = $_GET["categorie"];
+        $prix = $_GET["prix"];
+        $order = $_GET["order"];
+        $nom = $_GET["nom"];
+
+        $data = array(
+            "marque" => $marque,
+            "categorie" => $categorie
+        );
+
+        //switch case prix
+        if ($prix == "") { $prix = NULL; }
+        if ($order == "") { $order = NULL; }
+        if ($nom == "") { $nom = NULL; }
+
+        $tab_temp = ModelProduit::selectFiltre($data, $prix, $order);
+        
+
+        $tab_p = array();
+        //recherche  du nom
+        if (!is_null($nom)) {
+            foreach ($tab_temp as $p) {
+                //var_dump($p);
+                //echo $p->get("nom");
+                if (strpos($p->get("nom"), $nom) == int) {
+                    array_push($tab_p, $p);
+                } else { /*rien*/ }
+            }
+        }
+
+        
+
+        $controller='produit';
+        $view = 'list';
+        $pagetitle='Liste des produits';
+        require File::build_path(array("view","view.php"));
+    } 
 }
 ?>

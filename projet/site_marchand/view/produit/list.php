@@ -1,5 +1,67 @@
-
 <?php
+$form = "<br><div>
+<form method='get'>
+<input type=\"hidden\" value='readFiltre' name=\"action\"/>
+        <input type=\"hidden\" value=\"produit\" name=\"controller\"/>
+    <fieldset>
+    <legend>Filtre/Recherche/Trie</legend>
+    <p>
+    <label>Catégorie</label><br>
+    <select multiple name='categorie[]'>
+        <option value='Shonen'>Shonen</option>
+        <option value='Seinen'>Seinen</option>
+        <option value='Shojo'>Shojo</option>
+        <option value='Josei'>Josei</option>
+        <option value='Yaoi'>Yaoi</option>
+    </select>
+    </p>
+
+    <div>
+    <label>Marque (Éditeur)<label><br>
+    <select multiple name='marque[]'>
+        <option value='Shūeisha'>Shūeisha</option>
+        <option value='Kadokawa'>Kadokawa</option>
+        <option value='Square Enix'>Square Enix</option>
+    </select>
+    </div>
+
+    <div>
+        <p><label>Prix</label></p>
+        <!-- je sais pas si on fait une requete sql pour selectionner le plus grand prix et l'afficher dans le placeholder et le max -->
+        <div>
+        <input type='radio' id='optionPrixA' name='prix' value='11'checked>
+        <label for='optionPrixA'>Entre 5€ et 15€</label>
+        </div>
+        <div>
+        <input type='radio' id='optionPrixB' name='prix' value='22'>
+        <label for='optionPrixB'>Plus de 15€</label>
+        </div>
+    </div>
+
+
+    <div><p>
+    <label>Trie</label>
+    <select name='order' > 
+        <option value=''>--Ordre d'affichage--</option>
+        <option value='A'>Alphabétique croissant</option>
+        <option value='B'>Alphabétique décroissant</option>
+        <option value='C'>Prix croissant</option>
+        <option value='D'>Prix décroissant</option>
+    <!-- je sais pas quoi mettre d'autre  -->
+    </select>
+    </p></div>
+
+    <div><p>
+    <label>Nom</label>
+    <input type='text'name='nom'>
+</p></div>
+
+    <input type='submit' name='pitie' value='ok'/>
+    </fieldset>
+
+</form></div>";
+echo $form;
+
 $html = "";
 $txtProduit = "";
 foreach ($tab_p as $p) {

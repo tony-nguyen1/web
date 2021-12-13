@@ -2,10 +2,11 @@
 $html = "
 <form method=\"get\" action=\"index.php\">
     <fieldset>
+        <legend><h2>Connexion</h2></legend>
         <input type=\"hidden\" value=\"connected\" name=\"action\"/>
         <input type=\"hidden\" value=\"client\" name=\"controller\"/>
 
-        <h2>Connexion</h2>
+        
 
         <p>
         <label for=\"identifiantID\">Identifiant* : </label>
