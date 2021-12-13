@@ -9,10 +9,8 @@ $form = "<br><div>
     <p>
     <label>Catégorie</label><br>
     <select multiple name='categorie[]'>
-        <option value='Shonen'>Shonen</option>
-        <option value='Seinen'>Seinen</option>
-        <option value='Shojo'>Shojo</option>
-        <option value='Josei'>Josei</option>
+        <option value='Isekai'>Isekai</option>
+        <option value='Slice of life'>Slice of life</option>
         <option value='Yaoi'>Yaoi</option>
     </select>
     </p>
