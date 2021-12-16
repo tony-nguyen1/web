@@ -82,10 +82,12 @@ class ControllerProduit {
 
         $tab_temp = ModelProduit::selectFiltre($data, $prix, $order);
         
+        //var_dump($tab_temp);
 
         $tab_p = array();
         //recherche  du nom
         if (!is_null($nom)) {
+            //echo "<p>recherche par nom</p>";
             foreach ($tab_temp as $p) {
                 //var_dump($p);
                 //echo $p->get("nom");
@@ -93,6 +95,9 @@ class ControllerProduit {
                     array_push($tab_p, $p);
                 } else { /*rien*/ }
             }
+        } else { //pas de recherche de nom
+            //echo "<p>Pas de recherche par nom</p>";
+            $tab_p = $tab_temp;
         }
 
         
