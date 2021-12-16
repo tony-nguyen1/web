@@ -7,12 +7,13 @@
     <body>
         <header>
             <a href="index.php?action=readAll&controller=produit">Produits</a>
-            <a href="index.php?action=readAll&controller=client">Clients</a>
 <?php
 $encre = "";
+
 if (isset($_SESSION['login'])) { 
     $encre = "<a href='index.php?action=deconnect&controller=client'>Déconnexion</a>";
     $encre = $encre . " <a href='index.php?action=historique&controller=commande'>Mes commandes</a>";
+    $encre = $encre . " <a href='index.php?action=read&controller=client&email={$_SESSION['login']}'>Mon compte</a>";
 } else {
     $encre = "
         <a href='index.php?action=create&controller=client'>Inscription</a>
