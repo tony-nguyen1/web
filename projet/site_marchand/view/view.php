@@ -3,6 +3,7 @@
     <head>
         <meta charset="UTF-8">
         <title><?php echo $pagetitle; ?></title>
+        <link rel="stylesheet" href="./html.css">
     </head>
     <body>
         <header>
@@ -34,11 +35,11 @@ $filepath = File::build_path(array("view", $controller, "$view.php"));
 require $filepath;
 ?>
     
-        <footer>
+        <!--<footer>
             <p style="border: 1px solid black;text-align:right;padding-right:1em;">
                 Site marchand de Laurent Antoinette - Romain Campillo - Tony Nguyen
             </p>
-        </footer>
+        </footer>-->
     </body>
 </html>
 

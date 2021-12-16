@@ -1,9 +1,9 @@
 <?php
-$form = "<br><div>
+$form = "<div id='filtre'>
 <form method='get'>
 <input type=\"hidden\" value='readFiltre' name=\"action\"/>
         <input type=\"hidden\" value=\"produit\" name=\"controller\"/>
-    <fieldset>
+    
     <legend>Filtre/Recherche/Trie</legend>
     <div>
     <p>
@@ -25,7 +25,7 @@ $form = "<br><div>
         </select></p>
     </div>
 
-    <div><p>
+    <div>
         <label>Prix</label>
         <div>
             <input type='radio' id='optionPrixA' name='prix' value='11' checked>
@@ -35,7 +35,6 @@ $form = "<br><div>
             <input type='radio' id='optionPrixB' name='prix' value='22'>
             <label for='optionPrixB'>Plus de 15€</label>
         </div>
-        </p>
     </div>
 
 
@@ -57,7 +56,7 @@ $form = "<br><div>
 </p></div>
 
     <input type='submit' name='pitie' value='ok'/>
-    </fieldset>
+    
 
 </form></div>";
 echo $form;
@@ -98,5 +97,5 @@ foreach ($tab_p as $p) {
 
 }
 
-echo "<ol>{$html}</ol>"; 
+echo "<div id='corps'><ol>{$html}</ol></div>"; 
 ?>

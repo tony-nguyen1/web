@@ -1,1 +1,0 @@
-CREATE TABLE `phpmyadmin`.`Clients` ( `email` VARCHAR(32) NOT NULL , `motDePasse` VARCHAR(256) NOT NULL , `nom` VARCHAR(32) NOT NULL , `prenom` VARCHAR(16) NOT NULL , `ville` VARCHAR(16) NOT NULL , `adresse` VARCHAR(32) NOT NULL , `telephone` VARCHAR(10) NOT NULL , PRIMARY KEY (`email`)) ENGINE = InnoDB CHARSET=utf8 COLLATE utf8_general_ci;
