@@ -2,7 +2,7 @@
 $txtClient = "";
 
 $lienEmail = rawurlencode($c->get("email"));
-$link = "<a href='index.php?action=read&controller={$controller}&idProduit={$lienEmail}'>Détails</a>";    
+$link = "<a href='index.php?action=delete&controller=client&email={$lienEmail}'>Suppression du compte</a>";    
 
 
 $vEmail = htmlspecialchars($c->get("email"));
@@ -24,5 +24,5 @@ $txtClient = $txtClient . "telephone: {$vTelephone} <br>";
 
 
 $txtClient = "<p>{$txtClient}</p>";
-echo "<p>{$txtClient}</p>";
+echo "{$txtClient}<br>{$link}";
 ?>
