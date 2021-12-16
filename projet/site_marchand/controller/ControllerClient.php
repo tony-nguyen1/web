@@ -1,7 +1,8 @@
 <?php
-require_once File::build_path(array("model","ModelClient.php"));; // chargement du modèle
+require_once File::build_path(array("model","ModelClient.php")); // chargement du modèle
 require_once File::build_path(array("lib","Security.php"));
-require_once File::build_path(array("model","ModelProduit.php"));;
+require_once File::build_path(array("model","ModelProduit.php"));
+require_once File::build_path(array("controller","ControllerProduit.php"));;
 class ControllerClient {
     protected static $object = 'client';
 
@@ -98,7 +99,7 @@ class ControllerClient {
         setcookie(session_name(),'',time()-1);
 
         echo "Déconnexion";
-        static::readAll();
+        ControllerProduit::readAll();
     }
     /*public static function update() {
         $idEmail = $_GET["identifiant"];
