@@ -95,7 +95,7 @@ class ControllerVoiture {
         $pagetitle='Supression d\'une voiture';
         $view = 'deleted';
 
-        $tab_v = ModelVoiture::selectAll();
+        $tab_p = ModelProduit::selectAll();
 
         require File::build_path(array("view","view.php"));
     }

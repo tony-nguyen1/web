@@ -1,6 +1,7 @@
 <?php
 require_once File::build_path(array("model","ModelClient.php"));; // chargement du modèle
 require_once File::build_path(array("lib","Security.php"));
+require_once File::build_path(array("model","ModelProduit.php"));;
 class ControllerClient {
     protected static $object = 'client';
 
@@ -36,6 +37,12 @@ class ControllerClient {
             echo "adresse email non valide mais c'est pas grave";
         } else {
             echo "adresse email validé par le serveur";
+        }
+
+        if (strcmp($_GET["mdp"], $_GET["mdp_confirm"]) == 0) {
+            //mdp identique
+        }  else {
+            echo "mdp different mais c'est pas grave";
         }
 
         $array = array(
@@ -92,6 +99,26 @@ class ControllerClient {
 
         echo "Déconnexion";
         static::readAll();
+    }
+    /*public static function update() {
+        $idEmail = $_GET["identifiant"];
+
+        $c = ModelClient::select($idEmail);
+
+        $action = "update";
+    }*/
+    public function delete() {
+        $mail = $_GET['email'];
+
+        ModelClient::delete($mail);
+
+        $controller='client';
+        $pagetitle='Supression d\'un compte';
+        $view = 'deleted';
+
+        $tab_p = ModelProduit::selectAll();
+
+        require File::build_path(array("view","view.php"));
     }
 }
 ?>

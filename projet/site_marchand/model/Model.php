@@ -71,8 +71,8 @@ class Model {
     }
 
     public static function delete($primary_value) {
-        $table_name = static::$object;
-        $class_name = 'Model'.ucfirst($table_name);
+        $table_name = ucfirst(static::$object)."s";
+        $class_name = 'Model'.ucfirst(static::$object);
         $primary_key = static::$primary;
 
         $sql = "DELETE FROM {$table_name} WHERE {$primary_key} = :nom_tag";
