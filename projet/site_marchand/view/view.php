@@ -13,8 +13,8 @@ $encre = "";
 
 if (isset($_SESSION['login'])) { 
     $encre = "<a href='index.php?action=deconnect&controller=client'>Déconnexion</a>";
-    $encre = $encre . " <a href='index.php?action=historique&controller=commande'>Mes commandes</a>";
-    $encre = $encre . " <a href='index.php?action=read&controller=client&email={$_SESSION['login']}'>Mon compte</a>";
+    $encre = $encre . " <a href='index.php?action=historique&controller=commande'>Commandes</a>";
+    $encre = $encre . " <a href='index.php?action=read&controller=client&email={$_SESSION['login']}'>Compte</a>";
 } else {
     $encre = "
         <a href='index.php?action=create&controller=client'>Inscription</a>

@@ -21,7 +21,9 @@ if (count($tab_panier)==0) {
     $lien = "";
     $lienViderPanier = "<p><a href='index.php?action=clear2&controller=panier'>Vider panier</a></p>";
     $lienEnregistre = "<p><a href='index.php?action=create&controller=commande'>Enregistrer le panier</a></p>";
-    $lien = $lien . $lienViderPanier . $lienEnregistre;
+    $lien = $lien . $lienViderPanier;
+
+    if (isset($_SESSION['login'])) { $lien = $lien . $lienEnregistre; }
 
     $html = $html . $lien;
 }

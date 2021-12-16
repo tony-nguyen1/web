@@ -85,7 +85,7 @@ class ControllerPanier {
                 "idCommande" => $idCommande,
                 "idProduit" => $idPrdt,
                 "quantite" => $qte,
-                "montant" => $stock
+                "montant" => $montant
             );
     
             ModelLignesCommande::save($data);
