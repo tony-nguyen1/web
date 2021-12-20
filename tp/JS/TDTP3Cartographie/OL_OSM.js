@@ -8,6 +8,7 @@ let map = new ol.Map({
 });
 
 let listOverlay = [];
+let listOverlayDiv = [];
 
 
 
@@ -29,7 +30,7 @@ $().ready(function(){
                         //console.log(etablissement.nom);
                         html += "<input type='checkbox' id='"+i+"'>"+etablissement.nom+" ";
                         i++;
-                        foo(etablissement.long, etablissement.lat);
+                        foo(etablissement.nom, etablissement.long, etablissement.lat);
                     });
                     $('#points_interet').append("<h3>" + typeEtablissement + "</h3><div id='"+typeEtablissement+"'>" + html+"</div>");
                 }));
@@ -43,22 +44,38 @@ $().ready(function(){
 
 
 
-function foo(lon, lat) {
+function foo(nom, lon, lat) {
     let image = $("#markerProto").clone();
     $("body").prepend(image);
 
     let div = $("#popupProto").clone();
+    //div.append(nom);
+    div.text(nom);
     $("body").prepend(div);
     
+    console.log(nom);
+    
+
     let aOverlay = new ol.Overlay({position: ol.proj.fromLonLat([lon,lat]),
         positioning: 'center-center',
         element: document.getElementById("markerProto")}); // element fait référence à l’image
+    
+    let bOverlay = new ol.Overlay({
+        position: ol.proj.fromLonLat([lon,lat]),
+        positioning: 'center-right',
+        element: document.getElementById("popupProto")
+    }); 
 
 
     map.addOverlay(aOverlay);
     //aOverlay.getElement().style.display='block';
+    map.addOverlay(bOverlay);
+    //bOverlay.getElement().style.display='block';
+
+    //console.log(bOverlay.getElement());
 
     listOverlay.push(aOverlay);
+    listOverlayDiv.push(bOverlay);
 }
 
 
@@ -67,8 +84,10 @@ $('body').on("change", "input[type=checkbox]", function() {
     console.log("sélection de la case à cocher numéro "+valeur);
     if ($(this).is(':checked')) { 
         listOverlay[valeur].getElement().style.display='block';
+        listOverlayDiv[valeur].getElement().style.display='block';
     } else { 
         listOverlay[valeur].getElement().style.display='none';
+        listOverlayDiv[valeur].getElement().style.display='none';
     }
 });
 
