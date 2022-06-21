@@ -21,19 +21,19 @@ function carrousel() {
     oldBond = oldBond.replace(/\.[^/.]+$/, "");
 
     var n = bonds.indexOf(oldBond);
-    n = n === bonds.length-1 ? 0 : n+1;
+    n = n === bonds.length - 1 ? 0 : n + 1;
 
     currentBond = bonds[n];
 
     $("#photo").remove();
-    $("header").children("p").append($('<img id="photo" src="'+currentBond+'.jpg'+'" onmouseover="zoom(this)" onmouseout="dezoom(this)" onclick="carrousel()"/> </img>'));
+    $("header").children("p").append($('<img id="photo" src="' + currentBond + '.jpg' + '" onmouseover="zoom(this)" onmouseout="dezoom(this)" onclick="carrousel()"/> </img>'));
 }
 
-cocktails = [{'nom':'VM','amateurs':['Connery', 'Lazenby', 'Moore', 'Dalton', 'Brosnan', 'Craig']},
- {'nom':'Vesper','amateurs':['Craig']},
- {'nom':'Collins','amateurs':['Connery']},   
- {'nom':'Mint J','amateurs':['Connery']},
- {'nom':'The Mac', 'amateurs':['Craig']}
+cocktails = [{ 'nom': 'VM', 'amateurs': ['Connery', 'Lazenby', 'Moore', 'Dalton', 'Brosnan', 'Craig'] },
+{ 'nom': 'Vesper', 'amateurs': ['Craig'] },
+{ 'nom': 'Collins', 'amateurs': ['Connery'] },
+{ 'nom': 'Mint J', 'amateurs': ['Connery'] },
+{ 'nom': 'The Mac', 'amateurs': ['Craig'] }
 ];
 
 
@@ -42,11 +42,11 @@ function afficherCocktails() {
 
     currentBond = $("#photo").attr("src");
     currentBond = currentBond.replace(/\.[^/.]+$/, "");
-    
-    cocktails.forEach(function(item){
+
+    cocktails.forEach(function (item) {
         if (item.amateurs.includes(currentBond)) {
             console.log(item.nom);
-            $("#listeCocktails").append($('<li>'+item.nom+'</li>'));
+            $("#listeCocktails").append($('<li>' + item.nom + '</li>'));
 
         }
     });
@@ -58,4 +58,42 @@ function afficherCocktails() {
         afficherCocktails();
     }); 
   }); */
-  //https://www.w3schools.com/jquery/default.asp
+//https://www.w3schools.com/jquery/default.asp
+
+
+let tab = ["tony", "mouss"];
+
+// tab.forEach(test);
+
+function test(arg) {
+    console.log(arg);
+    return;
+}
+
+function chercheRecettes(tab, ingrdt, callback) {
+    for (const elem of tab) {
+        // callback(elem);
+
+        let booleanVar = true;
+        for (const foo of ingrdt) {
+            if (elem.ingredients.includes(foo)) {
+                //
+            } else {
+                booleanVar = false;
+            }
+        }
+
+        if (booleanVar) {
+            callback(elem.nom);
+        }
+    }
+}
+var recettes =
+    [
+        { "nom": "quatreQuarts", "ingredients": ["oeufs", "farine", "beurre", "sucre"] },
+        { "nom": "cake", "ingredients": ["farine", "sucre", "oeufs", "lait"] },
+        { "nom": "crêpe", "ingredients": ["farine", "oeufs", "lait", "beurre", "sucre"] }
+    ];
+
+chercheRecettes(recettes, ["farine", "lait"], function (nom) { console.log(nom); });
+
